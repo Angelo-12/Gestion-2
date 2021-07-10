@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function maestro(){
+        return view('Maestro.home');
+    }
+
+    public function tallerista(){
+        return view('Tallerista.home');
+    }
 }

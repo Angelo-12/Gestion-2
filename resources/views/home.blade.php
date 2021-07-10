@@ -34,19 +34,23 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 titulo-btn" >
-                                OPCION UNO
+                                ADMINISTRADOR
                             </div>
 
                             <div class="col-6 titulo-btn" >
-                                OPCION DOS
+                                MAESTRO
                             </div>
                         </div>
                     </div>
 
+                    <br>
+                    <br>
+                    <br>
+
                     <div class="container">
                         <div class="row">
                             <div class="col-6">
-                                <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-list"></i>
+                                <button type="submit" class="btn btn-success btn-circle btn-xl" id="sesion_tallerista" onclick="SesionTallerista();"><i class="fa fa-list"></i>
                                     
                                 </button>
                             </div>
@@ -56,7 +60,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 titulo-btn" >
-                                OPCION TRES
+                                TALLERISTA
                             </div>
                         </div>
                     </div>

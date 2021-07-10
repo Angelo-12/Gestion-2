@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 <link href="{{ asset('css/login.css') }}" rel="stylesheet">

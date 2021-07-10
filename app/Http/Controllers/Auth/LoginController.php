@@ -40,11 +40,11 @@ class LoginController extends Controller
 
     public function redirectTo(){
         $usuario_actual=\Auth::user();
-        if($usuario_actual->tipo_usuario==1){
+        if($usuario_actual->id_tipo_usuario==1){
             return route('home');
-        }else if($usuario_actual->tipo_usuario==2){
+        }else if($usuario_actual->id_tipo_usuario==2){
             return route('maestro');
-        }else if($usuario_actual->tipo_usuario==3){
+        }else if($usuario_actual->id_tipo_usuario==3){
             return route('tallerista');
         }
     }

@@ -34,11 +34,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 titulo-btn" >
-                                OPCION UNO
+                                ADMINISTRADOR
                             </div>
 
                             <div class="col-6 titulo-btn" >
-                                OPCION DOS
+                                MAESTRO
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 titulo-btn" >
-                                OPCION TRES
+                                TALLERISTA
                             </div>
                         </div>
                     </div>

@@ -21,5 +21,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/maestro', 'HomeController@maestro')->name('maestro');
-Route::get('/tallerista', 'HomeController@tallerista')->name('tallerista');
+Route::get('/maestro', [App\Http\Controllers\HomeController::class, 'maestro'])->name('maestro');
+Route::get('/tallerista', [App\Http\Controllers\HomeController::class, 'tallerista'])->name('tallerista');
+Route::get('/index',[App\Http\Controllers\Tallerista\SesionController::class,'index']);
+
+Route::group(['prefix' => App\Http\Controllers\Tallerista\SesionController::class,'Tallerista','middleware'=>'auth'], function () {
+    Route::get('index','Tallerista\SesionController@index');
+});
+

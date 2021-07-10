@@ -19,13 +19,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6" >
-                                <button type="button" class="btn btn-primary btn-circle btn-xl" ><i class="fa fa-list"></i>                                       
+                                <button type="button" class="btn btn-primary btn-circle btn-xl" >
+                                    <i class="fa fa-list"></i>                                       
                                 </button>
                                 
                             </div>
 
                             <div class="col-6">
-                                <button type="button" class="btn btn-secondary btn-circle btn-xl" disabled><i class="fa fa-list"></i>
+                                <button type="button" class="btn btn-secondary btn-circle btn-xl" disabled>
+                                    <i class="fa fa-list"></i>
                                 </button>
                             </div>
                         </div>
@@ -34,11 +36,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 titulo-btn" >
-                                OPCION UNO
+                                ADMINISTRADOR
                             </div>
 
                             <div class="col-6 titulo-btn" >
-                                OPCION DOS
+                                MAESTRO
                             </div>
                         </div>
                     </div>
@@ -46,7 +48,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6">
-                                <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-list"></i>
+                                <button type="button" class="btn btn-success btn-circle btn-xl" id="sesion_tallerist">
+                                    <i class="fa fa-list"></i>
                                     
                                 </button>
                             </div>
@@ -56,7 +59,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 titulo-btn" >
-                                OPCION TRES
+                                TALLERISTA
                             </div>
                         </div>
                     </div>
