@@ -3,7 +3,6 @@
 
 <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 
-
 @section('content')
 <div class="card p-5 card1 container">
     <div class="row d-flex justify-content-center">

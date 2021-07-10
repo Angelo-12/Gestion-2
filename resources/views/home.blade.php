@@ -1,28 +1,7 @@
 @extends('layouts.app')
 
-<style>
-  .btn-circle.btn-xl {
-        background-image:url('img/lapiz.png');
-        background-repeat:no-repeat;
-        width: 200px;
-        height: 200px;
-        background-position:center;
-        padding: 10px 16px;
-        border-radius: 100px;
-        font-size: 24px;
-        line-height: 1.33;
-    }
+<link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
-    .titulo-btn{
-       
-        background-position:center;
-        padding: 10px 16px;
-        font-size: 24px;
-        line-height: 1.33;
-    }
-
-
-</style>
 @section('content')
 <div class="container">
     <div class="row justify-content-center principal">
