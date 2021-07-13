@@ -82,6 +82,7 @@
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+<script src="https://kit.fontawesome.com/b02b2e8b3d.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{ asset('js/funciones.js') }}" defer></script>
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
