@@ -15,11 +15,13 @@
                                         <div class="col-md-8 offset-md-2">
                                             <form action="simple-results.html">
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control form-control-lg" placeholder="Ingresa el id">
+                                                    <input type="text" name="id_tallerista" class="form-control form-control-lg" placeholder="Ingresa el id">
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-lg btn-default">
+                                                        <button type="button" class="btn btn-sm btn-default" id="buscar_tallerista">
                                                             <i class="fas fa-search"></i>
                                                         </button>
+
+                                                        <input type="text" value="{{Auth::user()->id}}" hidden>
                                                     </div>
                                                 </div>
                                             </form>
@@ -34,18 +36,62 @@
                                 <div class="col-6">
                                   <div class="card">
                                     <div class="card-header">
-                                      <h3 class="card-title">Empleado</h3>
+                                      <h3 class="card-title">Tallerista</h3>
+                                    </div>
+                                     <div class="card-header">
+                                      <button type="button" class="btn btn-md btn-primary" id="buscar_tallerista">
+                                          PDF <i class="fas fa-file-pdf"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-md btn-success" id="buscar_tallerista">
+                                          EXCEL <i class="far fa-file-excel"></i>
+                                      </button>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body table-responsive p-0" style="height: 300px;">
-                                      <table class="table table-head-fixed text-nowrap">
+                                      <table id="tabla_tallerista" class="table table-head-fixed text-nowrap">
                                         <thead>
                                           <tr>
                                             <th>Id</th>
                                             <th>Nombre</th>
-                                            <th>Date</th>
+                                            <th>Lugar</th>
+                                            <th>Opcion</th>
+                                            <th></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          
+                                        </tbody>
+                                      </table>
+                                    </div>
+
+                                    <!-- /.card-body -->
+                                  </div>
+                                  <!-- /.card -->
+                                </div>
+                                <div class="col-6">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <h3 class="card-title">Lista</h3>
+                                    </div>
+
+                                    <div class="card-header">
+                                      <button type="button" class="btn btn-md btn-primary" id="buscar_tallerista">
+                                          PDF <i class="fas fa-file-pdf"></i>
+                                      </button>
+
+                                      <button type="button" class="btn btn-md btn-success" id="buscar_tallerista">
+                                          EXCEL <i class="far fa-file-excel"></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                      <table id="tabla_lista" class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                          <tr>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Lugar</th>
                                             <th>Status</th>
-                                            <th>Reason</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -54,41 +100,13 @@
                                       </table>
                                     </div>
                                     <!-- /.card-body -->
+                                    <div class="card-header">
+                                      <button type="button" class="btn btn-md btn-primary" id="buscar_tallerista">
+                                          Guardar <i class="far fa-save"></i>
+                                      </button>
+                                    </div>
                                   </div>
                                   <!-- /.card -->
-                                </div>
-                                <div class="col-6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                          <div class="col-6">
-                                            <h3 class="card-title">Agregado</h3>
-                                          </div>
-
-                                          <div class="col-6">
-                                            <button ><i class="fas fa-file-pdf">Descargar</i></button>
-                                          </div>
-                                        </div>
-                                    </div>
-                                      <!-- /.card-header -->
-                                      <div class="card-body table-responsive p-0" style="height: 300px;">
-                                        <table class="table table-head-fixed text-nowrap">
-                                          <thead>
-                                            <tr>
-                                              <th>Id</th>
-                                              <th>Nombre</th>
-                                              <th>Date</th>
-                                              <th>Status</th>
-                                              <th>Reason</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                      <!-- /.card-body -->
-                                    </div>
-                                    <!-- /.card -->
                                 </div>
                             </div>
                         </div>
