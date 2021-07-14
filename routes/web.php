@@ -25,6 +25,8 @@ Route::get('/maestro', [App\Http\Controllers\HomeController::class, 'maestro'])-
 Route::get('/tallerista', [App\Http\Controllers\HomeController::class, 'tallerista'])->name('tallerista');
 Route::get('/index',[App\Http\Controllers\Tallerista\SesionController::class,'index']);
 
+Route::get('/dashboard',[App\Http\Controllers\Administrador\AdministradorController::class,'index']);
+
 Route::group(['prefix' => App\Http\Controllers\Tallerista\SesionController::class,'Tallerista','middleware'=>'auth'], function () {
     Route::get('index','Tallerista\SesionController@index');
 });

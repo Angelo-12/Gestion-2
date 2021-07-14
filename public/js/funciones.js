@@ -4,8 +4,16 @@ $(document).ready(function() {
          location.href='/index';
     });
 
+    $("#sesion_administrador").click(function(){
+        location.href='/dashboard';
+   });
+
 
 });
+
+function toDashboard(){
+     location.href='/dashboard';
+}
 
 /*function SesionTallerista(){
          location.href='/Tallerista/index';

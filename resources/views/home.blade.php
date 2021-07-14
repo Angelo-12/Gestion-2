@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<link href="{{ asset('css/home.css') }}" rel="stylesheet">
+
 
 @section('content')
 <div class="container">
@@ -19,7 +19,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6" >
-                                <button type="button" class="btn btn-primary btn-circle btn-xl" ><i class="fa fa-list"></i>                                       
+                                <button type="button" class="btn btn-primary btn-circle btn-xl" onclick="toDashboard()"><i class="fa fa-list"></i>                                       
                                 </button>
                                 
                             </div>

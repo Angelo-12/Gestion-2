@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
@@ -17,9 +18,14 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link href="{{ asset('select2/select2') }}/dist/css/select2.css" rel="stylesheet">
+
+    
+        
 
 </head>
 <body>
+    <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -77,13 +83,17 @@
             @yield('content')
         </main>
     </div>
+
+    
 </body>
 
 <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script src="https://kit.fontawesome.com/b02b2e8b3d.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{ asset('js/funciones.js') }}" defer></script>
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
+@yield('scripts')
+@stack('js')
 </html>
