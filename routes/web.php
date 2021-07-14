@@ -20,14 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/maestro', [App\Http\Controllers\HomeController::class, 'maestro'])->name('maestro');
 Route::get('/tallerista', [App\Http\Controllers\HomeController::class, 'tallerista'])->name('tallerista');
-Route::get('/index',[App\Http\Controllers\Tallerista\SesionController::class,'index']);
+//Route::get('/index',[App\Http\Controllers\Tallerista\SesionController::class,'index']);
 
-Route::get('/dashboard',[App\Http\Controllers\Administrador\AdministradorController::class,'index']);
-
-Route::group(['prefix' => App\Http\Controllers\Tallerista\SesionController::class,'Tallerista','middleware'=>'auth'], function () {
-    Route::get('index','Tallerista\SesionController@index');
+Route::group(['namespace' => 'Tallerista','prefix'=>'Tallerista','middleware'=>'auth'], function () {
+    Route::get('index',[App\Http\Controllers\Tallerista\SesionController::class,'index']);
+    Route::get('buscar/{id}',[App\Http\Controllers\Tallerista\SesionController::class,'buscar']);
 });
 
+Route::get('/dashboard',[App\Http\Controllers\Administrador\AdministradorController::class,'index']);

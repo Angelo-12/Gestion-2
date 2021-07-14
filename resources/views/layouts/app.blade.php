@@ -25,7 +25,6 @@
 
 </head>
 <body>
-    <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -88,8 +87,9 @@
 </body>
 
 <!-- Scripts -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://kit.fontawesome.com/b02b2e8b3d.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{ asset('js/funciones.js') }}" defer></script>
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
