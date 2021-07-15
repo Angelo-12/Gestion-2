@@ -50,8 +50,10 @@ $(document).ready(function() {
           });
      });
 
-     function toDashboard(){
-          location.href='/dashboard';
-     }
+     
 
 });
+
+function toDashboard(){
+     location.href='/dashboard';
+}

@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link href="{{ asset('select2/select2') }}/dist/css/select2.css" rel="stylesheet">
-
+    <link href="{{ asset('css') }}/datatables.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/administrador.css" rel="stylesheet">
+    
     
         
 
