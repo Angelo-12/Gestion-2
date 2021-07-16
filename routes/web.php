@@ -30,6 +30,6 @@ Route::group(['namespace' => 'Tallerista','prefix'=>'Tallerista','middleware'=>'
 });
 
 Route::get('/dashboard',[App\Http\Controllers\Administrador\AdministradorController::class,'index']);
-Route::get('/getDatosTallerista/{id}',[App\Http\Controllers\Administrador\AdministradorController::class,'getDatosTallerista']);
+Route::get('/getDatosTallerista/{id}/{sesion}',[App\Http\Controllers\Administrador\AdministradorController::class,'getDatosTallerista']);
 Route::get('/getDatosTallerista2/{id}',[App\Http\Controllers\Administrador\AdministradorController::class,'getDatosTallerista2']);
-Route::get('/getDatosTallerista3/{id}',[App\Http\Controllers\Administrador\AdministradorController::class,'getDatosTallerista3']);
+Route::get('/getDatosTallerista3/{id}/{sesion}',[App\Http\Controllers\Administrador\AdministradorController::class,'getDatosTallerista3']);

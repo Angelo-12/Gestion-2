@@ -9,39 +9,75 @@
                         <div class="card-body">
                             <div class="container">
                                 <section class="content" tabindex="-1">
-                                    <div class="container-fluid">
-                                        
+                                    <div class="container-fluid">                                        
                                         <div class="row" >
-                                            <div class="col-md-10 offset-md-2">
-                                            <h4 class="title">Buscar Tallerista</h4> <br>
-                                            <select id="select" class="form-control">
-                                                <option></option>
-                                                @foreach ($data as $dat)
-                                                    <option value="{{$dat->id}}">{{$dat->nombre_tallerista}}</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="col-12">
+                                                <h4 class="title">Buscar Tallerista</h4>
+                                            </div>
+                                                
+                                            <div class="col-xs-12 col-md-6">
+                                                <select id="select" class="form-control">
+                                                    <option></option>
+                                                    @foreach ($data as $dat)
+                                                        <option value="{{$dat->id}}">{{$dat->nombre_tallerista}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="col-xs-12 col-md-6">
+                                                <select id="select2" class="form-control">
+                                                    <option></option>
+                                                    @foreach ($sesiones as $ses)
+                                                        <option value="{{$ses->sesion}}">{{$ses->sesion}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>                                            
+                                        </div>
+
+                                        <div class="row hide">
+                                            <div class="col-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover" id="tabla">
+                                                        <thead class=" text-primary">
+                                                            <tr>
+                                                                <th>Pregunta</th>
+                                                                <th>Muy Desacuerdo</th>
+                                                                <th>Desacuerdo</th>
+                                                                <th>Le da Igual</th>
+                                                                <th>De Acuerdo</th>    
+                                                                <th>Muy de Acuerdo</th> 
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <table class="table table-hover" id="tabla">
-                                                <thead class=" text-primary">
-                                                    <tr>
-                                                        <th>Pregunta</th>
-                                                        <th>En Desacuerdo</th>
-                                                        <th>Poco de a cuerdo</th>
-                                                        <th>Le da Igual</th>
-                                                        <th>De Acuerdo</th>    
-                                                        <th>Muy de Acuerdo</th> 
-                                                    </tr>
-                                                </thead>
-                                            </table>
+                                        <div class="row hide">
+                                            <div class="col-xs-12 col-md-6">
+                                                <canvas id="preg_1"></canvas>
+                                            </div>  
+                                            
+                                            <div class="col-xs-12 col-md-6">
+                                                <canvas id="preg_2"></canvas>
+                                            </div> 
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-md-12" style="min-height:400px">
-                                                <canvas id="myChart"></canvas>
-                                            </div>                                            
+                                        <div class="row hide">
+                                            <div class="col-xs-12 col-md-6">
+                                                <canvas id="preg_3"></canvas>
+                                            </div>  
+                                            
+                                            <div class="col-xs-12 col-md-6">
+                                                <canvas id="preg_4"></canvas>
+                                            </div> 
+                                        </div>
+
+                                        <div class="row hide">
+                                            <div class="col-xs-12 col-md-6 ml-auto mr-auto">
+                                                <canvas id="preg_5"></canvas>
+                                            </div> 
                                         </div>
                                     </div>
 
@@ -70,6 +106,8 @@
     <script type="text/javascript">
 
     let tallerista_select = null;
+    let sesion_select = null;
+
     let colors = [
         'rgb(255, 167, 38, 0.7)',
         'rgb(102, 187, 106, 0.7)',
@@ -83,7 +121,26 @@
             placeholder: 'Seleccione un Tallerista'
         }).on('select2:select', function () {       
             var value = $("#select").select2('data');
-            tallerista_select=value[0].id;
+            var value2 = $("#select2").select2('data');
+
+            tallerista_select = value[0].id;
+            sesion_select = value2[0].id;
+            filtrar();
+
+            let nodes = document.querySelectorAll('.hide');
+            nodes.forEach(element=>{
+                element.classList.remove('hide');
+            });
+        });
+
+        $('#select2').select2({
+            placeholder: 'Seleccione una Sesion'
+        }).on('select2:select', function () {       
+            var value = $("#select").select2('data');
+            var value2 = $("#select2").select2('data');
+
+            tallerista_select = value[0].id;
+            sesion_select = value2[0].id;
             filtrar();
         });
 
@@ -95,7 +152,6 @@
             "paging":   false,
             "ordering": false,
             "info":     false,
-            "ajax": "/getDatosTallerista2/1",
             "autoWidth": false,
             "columns": [
                 {"data": "pregunta"},
@@ -120,26 +176,91 @@
         
     });
 
-    let ctf = $('#myChart');
-		let chart_tf = new Chart(ctf, {
-			type: 'bar',
-			data: {
-				datasets: []
-			},
-			options: {
-				responsive: true,
-				scales: {
-					yAxes: [{
-						ticks: {beginAtZero:true}
-					}]
-				},
-				title: {
-					display: true,
-					text: 'Reportes por tipo de falla'
-				},
-				legend:{display:false}
-			}
-		});
+    let p_1 = $('#preg_1');
+    let preg_1 = new Chart(p_1, {
+        type: 'bar',
+        data: {
+            datasets: []
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {beginAtZero:true}
+                }]
+            }
+        }
+    });
+
+    let p_2 = $('#preg_2');
+    let preg_2 = new Chart(p_2, {
+        type: 'bar',
+        data: {
+            datasets: []
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {beginAtZero:true}
+                }]
+            },
+            title: {
+                display: true,
+                text: 'Reportes por tipo de falla'
+            },
+            legend:{display:true}
+        }
+    });
+
+
+    let p_3 = $('#preg_3');
+    let preg_3 = new Chart(p_3, {
+        type: 'bar',
+        data: {
+            datasets: []
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {beginAtZero:true}
+                }]
+            }
+        }
+    });
+
+    let p_4 = $('#preg_4');
+    let preg_4 = new Chart(p_4, {
+        type: 'bar',
+        data: {
+            datasets: []
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {beginAtZero:true}
+                }]
+            }
+        }
+    });
+
+    let p_5 = $('#preg_5');
+    let preg_5 = new Chart(p_5, {
+        type: 'bar',
+        data: {
+            datasets: []
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {beginAtZero:true}
+                }]
+            }
+        }
+    });
 
     function getColors(){
         return shuffleArray(colors);
@@ -157,8 +278,10 @@
 
 
     function filtrar(){
+        if(tallerista_select=='') tallerista_select=0;
+        if(sesion_select=='') sesion_select=0;
         $.ajax({
-            url:'/getDatosTallerista/'+tallerista_select,
+            url:'/getDatosTallerista/'+tallerista_select+'/'+sesion_select,
             success: function (response) {
                 $('#tabla').DataTable().clear().draw();
                 $('#tabla').DataTable().rows.add(response);
@@ -167,29 +290,69 @@
         });
 
         $.ajax({
-            url:'/getDatosTallerista3/'+tallerista_select,
+            url:'/getDatosTallerista3/'+tallerista_select+'/'+sesion_select,
             success: function (response) {
                 let res = JSON.parse(response);
-                console.log(res);
-                let arre = [];
-                let cont = 0;
-                res.data.forEach(element=>{
-                    let set = {
-                        label: element.pregunta,
-                        backgroundColor: [colors[cont]],
-                        data: element                        
-                    }
-                    arre.push(set);
-                    cont++;
-                    if(cont>colors.length-1) cont=0;
-                });
 
-                console.log(arre);
+                let label1 = res.data[0].pregunta;
+                let label2 = res.data[1].pregunta;
+                let label3 = res.data[2].pregunta;
+                let label4 = res.data[3].pregunta;
+                let label5 = res.data[4].pregunta;
                 
+                delete res.data[0].pregunta;
+                delete res.data[1].pregunta;
+                delete res.data[2].pregunta;
+                delete res.data[3].pregunta;
+                delete res.data[4].pregunta;
 
-                chart_tf.data.datasets=arre;
-                chart_tf.options.title.text='Reportes por tipo de fallas (Total: )';
-                chart_tf.update();
+                let set1 = {
+                    label: label1,
+                    backgroundColor: colors,
+                    data: res.data[0]                       
+                }
+
+                preg_1.data.datasets[0]=set1;
+                preg_1.update();
+
+                let set2 = {
+                    label: label2,
+                    backgroundColor: colors,
+                    data: res.data[1]                       
+                }
+
+                preg_2.data.datasets[0]=set2;
+                preg_2.update();
+
+
+                let set3 = {
+                    label: label3,
+                    backgroundColor: colors,
+                    data: res.data[2]                       
+                }
+
+                preg_3.data.datasets[0]=set3;
+                preg_3.update();
+
+
+                let set4 = {
+                    label: label4,
+                    backgroundColor: colors,
+                    data: res.data[3]                       
+                }
+
+                preg_4.data.datasets[0]=set4;
+                preg_4.update();
+
+
+                let set5 = {
+                    label: label5,
+                    backgroundColor: colors,
+                    data: res.data[4]                       
+                }
+
+                preg_5.data.datasets[0]=set5;
+                preg_5.update();
             }
         });
     }
