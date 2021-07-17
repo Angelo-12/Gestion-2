@@ -23,6 +23,17 @@ class AdministradorController extends Controller
         return view('Administrador.sesion', ['data'=>$data, 'sesiones'=>$sesiones]);
     }
 
+    public function maestro(){
+        $data = Tallerista::all();
+
+        $sesiones = DB::select(DB::raw('
+            SELECT DISTINCT sesion 
+            FROM encuesta
+        '));      
+
+        return view('Maestro.home', ['data'=>$data, 'sesiones'=>$sesiones]);
+    }
+
     public function getDatosTallerista($id, $sesion){
         $preguntas = Preguntas::select('pregunta')->get();
 

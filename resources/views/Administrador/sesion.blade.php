@@ -99,6 +99,9 @@
     <script src="{{ asset('select2/select2') }}/dist/js/select2.js"></script>
     <script src="{{ asset('js') }}/datatables.js"></script>
     <script src="{{ asset('chart') }}/dist/chart.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 @endsection
 
 
@@ -153,6 +156,10 @@
             "ordering": false,
             "info":     false,
             "autoWidth": false,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'excel'
+            ],
             "columns": [
                 {"data": "pregunta"},
                 {"data": "res_1"}, 

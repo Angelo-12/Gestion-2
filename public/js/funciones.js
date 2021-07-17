@@ -57,3 +57,7 @@ $(document).ready(function() {
 function toDashboard(){
      location.href='/dashboard';
 }
+
+function toMaestro(){
+     location.href='/maestro';
+}
